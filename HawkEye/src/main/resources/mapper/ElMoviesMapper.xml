@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hawkeye.mapper.elmapper.ElMoviesMapper">
+    <select id="getMovie" resultMap="listMovies">
+        SELECT `id`,`movie_main_title`,`default_img` FROM `movie`
+    </select>
+    <resultMap id="listMovies" type="com.hawkeye.elpojo.ElMovies">
+        <result column="movie_main_title" property="movieMainTitle"/>
+        <result column="default_img" property="defaultImg"/>
+    </resultMap>
+</mapper>

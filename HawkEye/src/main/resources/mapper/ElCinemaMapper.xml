@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hawkeye.mapper.elmapper.ElCinemaMapper">
+    <select id="getElCinema" resultMap="listCinema">
+        SELECT `id`,`cinema_name` FROM `cinema`
+    </select>
+    <resultMap id="listCinema" type="com.hawkeye.elpojo.ElCinema">
+        <result column="cinema_name" property="cinemaName"/>
+    </resultMap>
+</mapper>

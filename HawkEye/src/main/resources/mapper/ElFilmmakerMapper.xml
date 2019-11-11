@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hawkeye.mapper.elmapper.ElFilmmakerMapper">
+    <select id="getFilmmakers" resultMap="listFilmmaker">
+        SELECT `id`,`filmmaker_name`,`default_img` FROM `filmmaker`
+    </select>
+    <resultMap id="listFilmmaker" type="com.hawkeye.elpojo.ElFilmmaker">
+        <result column="filmmaker_name" property="filmmakerName"/>
+        <result column="default_img" property="defaultImg"/>
+    </resultMap>
+</mapper>

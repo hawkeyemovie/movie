@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hawkeye.mapper.remapper.BillboardMapper">
+<!--    榜单Mapper-->
+
+<!--    最受期待的sql-->
+    <select id="getMostAnticipated" resultMap="getMostAnticipatedList">
+        SELECT m.`id`,m.`default_img`,`movie_main_title`,`release_time`,`to_star`,
+                (SELECT COUNT(1) FROM `user_expect` AS ue
+                    WHERE MONTH(ue.`create_time`) = MONTH(NOW()) AND ue.`movie_id` = m.`id` ) AS ben,
+                (SELECT COUNT(1) FROM `user_expect` AS ue WHERE ue.`movie_id` = m.`id` ) AS zong
+            FROM movie AS m
+        WHERE release_time &lt; NOW()
+            ORDER BY ben DESC
+            LIMIT 0,10;
+    </select>
+    <resultMap id="getMostAnticipatedList" type="Movie">
+        <result property="id" column="id"></result>
+        <result property="movieMainTitle" column="movie_main_title"></result>
+        <result property="defaultImg" column="default_img"></result>
+        <result property="releaseTime" column="release_time"></result>
+        <result property="toStar" column="to_star"></result>
+        <result property="ben" column="ben"></result>
+        <result property="zong" column="zong"></result>
+    </resultMap>
+
+
+<!--    #TOP100-->
+    <select id="getTOPBill" resultMap="getTOPBillList">
+        SELECT m.`id`,m.`default_img`,`movie_main_title`,`release_time`,`to_star`,
+	            CAST(AVG(umc.`score`) AS DECIMAL(2,1))AS score,COUNT(umc.`id`) AS commentnum FROM movie AS m
+            INNER JOIN user_movie_comment AS umc ON umc.movie_id = m.id
+        WHERE m.`is_upper_shelf` = 0
+            GROUP BY m.`id`
+            ORDER BY commentnum,score DESC
+    </select>
+    <resultMap id="getTOPBillList" type="Movie">
+        <result property="id" column="id"></result>
+        <result property="movieMainTitle" column="movie_main_title"></result>
+        <result property="defaultImg" column="default_img"></result>
+        <result property="releaseTime" column="release_time"></result>
+        <result property="toStar" column="to_star"></result>
+        <result property="score" column="score"></result>
+        <result property="commentNum" column="commentnum"></result>
+    </resultMap>
+
+</mapper>

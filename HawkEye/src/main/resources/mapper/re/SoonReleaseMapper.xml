@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hawkeye.mapper.remapper.SoonReleaseMapper">
+<!--即将上映-->
+
+    <!--    这条SQL的 where BETWEEN -50 AND 0  中的-50要根据数据情况而改不然没数据-->
+    <select id="getSoonRelease" resultMap="SoonReleaseList">
+        SELECT  mo.`id`,mo.`movie_main_title`,mo.`release_time`, mo.`default_img`,mr.region_name,
+                YEAR(mo.`release_time`) AS `year`, mt.`type_name`,
+                mr.`id` AS region_id, mt.`id` AS type_id,mt.`type_name`, COUNT(ue.`movie_id`) AS 'thinkSee'
+            FROM `movie` AS mo
+            INNER JOIN movie_region AS mr ON mr.id = mo.movie_region_id
+            INNER JOIN `movie_relation_type` AS mrt ON mrt.movie_id =  mo.id
+            INNER JOIN `movie_type` AS mt ON mt.id = mrt.movie_type_id
+            INNER JOIN `user_expect` AS ue ON ue.`movie_id` = mo.id
+        WHERE TIMESTAMPDIFF(DAY,NOW() , mo.release_time) BETWEEN -50 AND 0
+            GROUP BY mo.id,mrt.movie_type_id,ue.`movie_id`
+    </select>
+    <resultMap id="SoonReleaseList" type="SoonRelease">
+        <result property="id" column="id"></result>
+        <result property="movieMainTitle" column="movie_main_title"></result>
+        <result property="releaseTime" column="release_time"></result>
+        <result property="year" column="year"></result>
+        <result property="defaultImg" column="default_img"></result>
+        <result property="regionId" column="region_id"></result>
+        <result property="regionName" column="region_name"></result>
+        <result property="typeId" column="type_id"></result>
+        <result property="typeName" column="type_name"></result>
+        <result property="thinkSee" column="thinkSee"></result>
+    </resultMap>
+
+    
+</mapper>

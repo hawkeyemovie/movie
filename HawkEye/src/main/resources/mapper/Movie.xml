@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hawkeye.mapper.MovieMapper">
+    <select id="getMovies" resultMap="MovieList">
+        SELECT m.* ,(SELECT mv.version_name FROM movie_version mv WHERE mv.id = m.movie_version_id) `version`
+        FROM movie m
+        WHERE `is_upper_shelf` = 1 and m.id IN(SELECT movie_id FROM movie_relation_type mrt
+                                    <where>
+                                        <if test="typeId!='' and typeId!=null">
+                                            and mrt.movie_type_id=#{typeId}
+                                        </if>
+                                    </where>)
+        <if test="regionId!='' and regionId!=null">
+            and m.movie_region_id=#{regionId}
+        </if>
+        <if test="release!='' and release!=null">
+            and YEAR(m.release_time)=#{release}
+       </if>
+    </select>
+
+
+    <resultMap id="MovieList" type="Movie">
+        <result property="id" column="id" />
+        <result property="movieMainTitle" column="movie_main_title" />
+        <result property="movieSubheading" column="movie_subheading" />
+        <result property="movieDuration" column="movie_duration" />
+        <result property="defaultImg" column="default_img" />
+        <result property="toStar" column="to_star" />
+        <result property="movieSynopsis" column="movie_synopsis" />
+        <result property="isUpperShelf" column="is_upper_shelf" />
+        <result property="movieVersionId" column="movie_version_id" />
+        <result property="movieRegionId" column="movie_region_id" />
+        <result property="releaseTime" column="release_time" />
+        <result property="version" column="version"></result>
+
+    </resultMap>
+</mapper>

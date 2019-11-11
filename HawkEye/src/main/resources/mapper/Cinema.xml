@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hawkeye.mapper.CinemaMapper">
+    <select id="getCinemas" resultType="Cinema">
+        SELECT
+          c.`id`,
+          `cinema_name`,
+          `detailed_address`,
+          MIN(cf.`price`) AS `min_price`
+        FROM
+          cinema AS c
+          INNER JOIN `cinema_hall` AS ch
+            ON c.`id` = ch.`cinema_id`
+          INNER JOIN `chip_formation` AS cf
+            ON cf.`cniema_hall_id` = ch.`id`
+        GROUP BY c.`id`;
+    </select>
+</mapper>
