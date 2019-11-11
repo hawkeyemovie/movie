@@ -15,5 +15,18 @@
           INNER JOIN `chip_formation` AS cf
             ON cf.`cniema_hall_id` = ch.`id`
         GROUP BY c.`id`;
+--             SELECT
+--             c.`id`,
+--             c.`cinema_name`,
+--             c.`detailed_address`,
+--             MIN(cf.`price`) AS `min_price`
+--             FROM
+--             cinema AS c
+--             INNER JOIN `cinema_hall` AS ch
+--             ON c.`id` = ch.`cinema_id`
+--             INNER JOIN `chip_formation` AS cf
+--             ON cf.`cniema_hall_id` = ch.`id`
+--             WHERE cinema_hall_type_id = 13 AND `area_id` = AND `street_id` = AND `cinema_brand_id` =
+--             GROUP BY c.`id` ;
     </select>
 </mapper>
