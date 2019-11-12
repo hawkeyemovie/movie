@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hawkeye.mapper.CinemaAtlasMapper">
+    <select id="getCinemaAtlasByCinemaId" resultType="CinemaAtlas">
+        SELECT `id`,`cinema_id`,`img_route` FROM `cinema_atlas`
+        WHERE `cinema_id` = #{cinemaId}
+    </select>
+</mapper>
