@@ -4,16 +4,16 @@
 <mapper namespace="com.hawkeye.mapper.CinemaMapper">
     <select id="getCinemas" resultType="Cinema" parameterType="Map">
         SELECT
-          c.`id`,
-          `cinema_name`,
-          `detailed_address`,
-          MIN(cf.`price`) AS `min_price`
+        c.`id`,
+        `cinema_name`,
+        `detailed_address`,
+        MIN(cf.`price`) AS `min_price`
         FROM
-          cinema AS c
-          INNER JOIN `cinema_hall` AS ch
-            ON c.`id` = ch.`cinema_id`
-          INNER JOIN `chip_formation` AS cf
-            ON cf.`cniema_hall_id` = ch.`id`
+        cinema AS c
+        INNER JOIN `cinema_hall` AS ch
+        ON c.`id` = ch.`cinema_id`
+        INNER JOIN `chip_formation` AS cf
+        ON cf.`cniema_hall_id` = ch.`id`
         <where>
             <if test="cinemaBrandId > 0">
                 `cinema_brand_id` = #{cinemaBrandId}
@@ -29,5 +29,14 @@
             </if>
         </where>
         GROUP BY c.`id`;
+    </select>
+    <select id="getCinema" resultType="CinemaVo">
+        SELECT c.`id`,`cinema_name`,`detailed_address`,`cinema_landline`,cs.`service_name`,crs.`service_remarks`,ca.`img_route` FROM `cinema` AS c
+        INNER JOIN `cinema_relation_service` AS crs
+        ON c.`id` = crs.`cniema_id`
+        INNER JOIN `cinema_service` AS cs
+        ON crs.`service_id` = cs.`id`
+        INNER JOIN `cinema_atlas` AS ca
+        ON c.`id` = ca.`cinema_id`
     </select>
 </mapper>

@@ -1,6 +1,8 @@
 package com.hawkeye.mapper;
 
 import com.hawkeye.pojo.Cinema;
+import com.hawkeye.vo.CinemaVo;
+import io.lettuce.core.dynamic.annotation.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -12,4 +14,5 @@ public interface CinemaMapper {
      * @return
      */
     List<Cinema> getCinemas(Map<String, Integer> obj);
+    List<CinemaVo> getCinema(@Param("cinemaId") Integer cinemaId);
 }
