@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hawkeye.mapper.CinemaMovieMapper">
+    <select id="getCinemaMoviesByCinemaId" resultType="CinemaMovieVo">
+        SELECT
+          m.`id` AS movie_id,
+          m.`movie_main_title`,
+          ROUND(
+            IF(
+              m.`release_time` >= CURDATE(),
+              (SELECT
+                COUNT(1)
+              FROM
+                `user_expect`
+              WHERE `movie_id` = m.`id`),
+              (SELECT
+                AVG(`score`)
+              FROM
+                `user_movie_comment`
+              WHERE `movie_id` = m.`id`)
+            ),
+            1
+          ) AS score,
+          m.`movie_duration`,
+          (SELECT
+            `type_name`
+          FROM
+            `movie_relation_type` AS mrt
+            INNER JOIN `movie_type` AS mt
+              ON mrt.`movie_type_id` = mt.`id`
+          WHERE `movie_id` = 1
+          LIMIT 1) AS type_name,
+          m.`to_star`
+        FROM
+          `cinema_movie` AS cm
+          INNER JOIN `movie` AS m
+            ON cm.`movie_id` = m.`id`
+        WHERE `cinema_id` = #{cinemaId}
+    </select>
+</mapper>

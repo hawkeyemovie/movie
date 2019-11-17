@@ -1,9 +1,8 @@
 package com.hawkeye.vo;
 
-
-import com.hawkeye.pojo.CinemaService;
-
 import java.util.List;
+
+import com.hawkeye.vo.CinemaServiceVo;
 
 public class CinemaVo {
 
@@ -12,7 +11,8 @@ public class CinemaVo {
     private String detailedAddress;
     private String cinemaLandline;
     private String imgRoute;
-    private List<CinemaService> cinemaServices;
+    private List<CinemaServiceVo> cinemaServiceVos;
+    private List<CinemaMovieVo> cinemaMovieVos;
 
 
     public Integer getId() {
@@ -50,20 +50,27 @@ public class CinemaVo {
         this.cinemaLandline = cinemaLandline;
     }
 
-
-    public List<CinemaService> getCinemaServices() {
-        return cinemaServices;
-    }
-
-    public void setCinemaServices(List<CinemaService> cinemaServices) {
-        this.cinemaServices = cinemaServices;
-    }
-
     public String getImgRoute() {
         return imgRoute;
     }
 
     public void setImgRoute(String imgRoute) {
         this.imgRoute = imgRoute;
+    }
+
+    public List<CinemaServiceVo> getCinemaServiceVos() {
+        return cinemaServiceVos;
+    }
+
+    public void setCinemaServiceVos(List<CinemaServiceVo> cinemaServiceVos) {
+        this.cinemaServiceVos = cinemaServiceVos;
+    }
+
+    public List<CinemaMovieVo> getCinemaMovieVos() {
+        return cinemaMovieVos;
+    }
+
+    public void setCinemaMovieVos(List<CinemaMovieVo> cinemaMovieVos) {
+        this.cinemaMovieVos = cinemaMovieVos;
     }
 }

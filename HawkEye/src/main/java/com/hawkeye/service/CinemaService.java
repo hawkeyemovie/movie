@@ -1,13 +1,12 @@
-package com.hawkeye.mapper;
+package com.hawkeye.service;
 
 import com.hawkeye.pojo.Cinema;
 import com.hawkeye.vo.CinemaVo;
-import io.lettuce.core.dynamic.annotation.Param;
 
 import java.util.List;
 import java.util.Map;
 
-public interface CinemaMapper {
+public interface CinemaService {
     /**
      * 查询所有影院信息可以使用条件筛选
      * @param obj 筛选条件
@@ -20,5 +19,5 @@ public interface CinemaMapper {
      * @param cinemaId 影院编号
      * @return
      */
-    CinemaVo getCinema(@Param("cinemaId") Integer cinemaId);
+    CinemaVo getCinema(Integer cinemaId);
 }

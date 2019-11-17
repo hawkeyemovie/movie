@@ -30,13 +30,34 @@
         </where>
         GROUP BY c.`id`;
     </select>
-    <select id="getCinema" resultType="CinemaVo">
-        SELECT c.`id`,`cinema_name`,`detailed_address`,`cinema_landline`,cs.`service_name`,crs.`service_remarks`,ca.`img_route` FROM `cinema` AS c
-        INNER JOIN `cinema_relation_service` AS crs
-        ON c.`id` = crs.`cniema_id`
-        INNER JOIN `cinema_service` AS cs
-        ON crs.`service_id` = cs.`id`
-        INNER JOIN `cinema_atlas` AS ca
-        ON c.`id` = ca.`cinema_id`
+    <select id="getCinema" resultMap="cinemaVo">
+       SELECT
+          c.`id`,
+          `cinema_name`,
+          `detailed_address`,
+          `cinema_landline`,
+          cs.`service_name`,
+          crs.`service_remarks`,
+          ca.`img_route`
+        FROM
+          `cinema` AS c
+          INNER JOIN `cinema_relation_service` AS crs
+            ON c.`id` = crs.`cniema_id`
+          INNER JOIN `cinema_service` AS cs
+            ON crs.`service_id` = cs.`id`
+          INNER JOIN `cinema_atlas` AS ca
+            ON c.`id` = ca.`cinema_id`
+         WHERE c.`id` = #{cinemaId}
     </select>
+    <resultMap id="cinemaVo" type="CinemaVo">
+        <id property="id" column="id"></id>
+        <result property="cinemaName" column="cinema_name"></result>
+        <result property="detailedAddress" column="detailed_address"></result>
+        <result property="cinemaLandline" column="cinema_landline"></result>
+        <result property="imgRoute" column="img_route"></result>
+        <collection property="cinemaServiceVos" ofType="CinemaServiceVo">
+            <result property="serviceName" column="service_name"></result>
+            <result property="serviceRemarks" column="service_remarks"></result>
+        </collection>
+    </resultMap>
 </mapper>
