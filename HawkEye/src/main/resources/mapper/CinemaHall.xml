@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hawkeye.mapper.CinemaHallMapper">
+    <update id="upCinemaHall">
+        UPDATE `cinema_hall` SET `layout` = #{layout} WHERE `id` = #{chId}
+    </update>
+
+    <select id="getCinemaHall" resultMap="CinemaHallList">
+        SELECT * FROM `cinema_hall` WHERE id = #{id}
+    </select>
+
+    <resultMap id="CinemaHallList" type="CinemaHall">
+        <result property="id" column="id"/>
+        <result property="cinemaHallName" column="cinema_hall_name"/>
+        <result property="cinemaId" column="cinema_id"/>
+        <result property="layout" column="layout"/>
+        <result property="row" column="row"/>
+        <result property="column" column="column"/>
+        <result property="cinemaHallTypeId" column="cinema_hall_type_id"/>
+    </resultMap>
+</mapper>

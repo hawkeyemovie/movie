@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hawkeye.mapper.OrderSeatMapper">
+   <insert id="addOrderSeat">
+       INSERT INTO `order_seat`(`movie_ticket_id`,`seat_id`) VALUE(#{ticketOrder},#{seatId})
+   </insert>
+
+    <select id="getMaxOsid" resultType="Integer">
+        SELECT MAX(id) FROM `order_seat`
+    </select>
+</mapper>

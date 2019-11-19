@@ -18,20 +18,68 @@
        </if>
     </select>
 
+    <select id="getMovie" resultMap="MovieList">
+        SELECT * FROM `movie` WHERE id = #{id}
+    </select>
 
     <resultMap id="MovieList" type="Movie">
-        <result property="id" column="id" />
-        <result property="movieMainTitle" column="movie_main_title" />
-        <result property="movieSubheading" column="movie_subheading" />
-        <result property="movieDuration" column="movie_duration" />
-        <result property="defaultImg" column="default_img" />
-        <result property="toStar" column="to_star" />
-        <result property="movieSynopsis" column="movie_synopsis" />
-        <result property="isUpperShelf" column="is_upper_shelf" />
-        <result property="movieVersionId" column="movie_version_id" />
-        <result property="movieRegionId" column="movie_region_id" />
-        <result property="releaseTime" column="release_time" />
-        <result property="version" column="version"></result>
-
+        <result property="id" column="id"/>
+        <result property="movieMainTitle" column="movie_main_title"/>
+        <result property="movieSubheading" column="movie_subheading"/>
+        <result property="movieDuration" column="movie_duration"/>
+        <result property="defaultImg" column="default_img"/>
+        <result property="toStar" column="to_star"/>
+        <result property="movieSynopsis" column="movie_synopsis"/>
+        <result property="isUpperShelf" column="is_upper_shelf"/>
+        <result property="movieVersionId" column="movie_version_id"/>
+        <result property="movieRegionId" column="movie_region_id"/>
+        <result property="releaseTime" column="release_time"/>
     </resultMap>
+
+
+    <select id="showMovie">
+        SELECT
+        m.`id`,
+        m.`default_img`,
+        m.`movie_main_title`,
+        umc.`score`
+        FROM
+        `cinema` c,
+        `cinema_movie` cm,
+        `movie` m,
+        `movie_relation_type` mrt,
+        `movie_type` mt,
+        `user_movie_comment` umc
+        WHERE
+        cm.`cinema_id` = c.`id`
+        AND
+        m.`id` = cm.`movie_id`
+        AND
+        m.`id` = mrt.`movie_id`
+        AND
+        mrt.`movie_type_id` = mt.`id`
+        AND
+        m.`id` = umc.`movie_id`
+        <if test="uId!=0 and uId!=null">
+            AND
+            mt.`id` = #{mtId}
+        </if>
+        <if test="cId!=0 and cId!=null">
+            AND
+            c.`city_id` = #{cId}
+        </if>
+        <if test="aId!=0 and aId!=null">
+            AND
+            c.`area_id` = #{aId}
+        </if>
+        <if test="sId!=0 and sId!=null">
+            AND
+            c.`street_id` = #{sId}
+        </if>
+        GROUP BY
+        m.`id`,
+        m.`default_img`,
+        m.`movie_main_title`,
+        umc.`score`
+    </select>
 </mapper>

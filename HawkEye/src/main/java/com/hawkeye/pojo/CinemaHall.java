@@ -9,7 +9,15 @@ public class CinemaHall {
   private String layout;
   private Integer row;
   private Integer column;
+  private Integer cinemaHallTypeId;
 
+  public Integer getCinemaHallTypeId() {
+    return cinemaHallTypeId;
+  }
+
+  public void setCinemaHallTypeId(Integer cinemaHallTypeId) {
+    this.cinemaHallTypeId = cinemaHallTypeId;
+  }
 
   public Integer getId() {
     return id;
@@ -37,7 +45,6 @@ public class CinemaHall {
     this.cinemaId = cinemaId;
   }
 
-
   public String getLayout() {
     return layout;
   }
@@ -64,4 +71,25 @@ public class CinemaHall {
     this.column = column;
   }
 
+  public CinemaHall(String layout) {
+    this.layout = layout;
+  }
+
+  public CinemaHall() {
+  }
+
+  public CinemaHall(String layout, Integer column) {
+    this.layout = layout;
+    this.column = column;
+  }
+
+  public CinemaHall(Integer id, String cinemaHallName, Integer cinemaId, String layout, Integer row, Integer column, Integer cinemaHallTypeId) {
+    this.id = id;
+    this.cinemaHallName = cinemaHallName;
+    this.cinemaId = cinemaId;
+    this.layout = layout;
+    this.row = row;
+    this.column = column;
+    this.cinemaHallTypeId = cinemaHallTypeId;
+  }
 }

@@ -14,4 +14,7 @@ public interface MovieMapper {
      * @return
      */
     List<Movie> getMovies(@Param("typeId")Integer typeId,@Param("regionId")Integer regionId,@Param("release")String release);
+
+
+    Movie getMovie(@Param("id")Integer id);
 }

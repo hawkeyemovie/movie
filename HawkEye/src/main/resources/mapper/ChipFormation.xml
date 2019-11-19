@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hawkeye.mapper.ChipFormationMapper">
+
+    <select id="getChipFormation" resultMap="ChipFormationList">
+        SELECT * FROM `chip_formation` WHERE `id` =#{cfId}
+    </select>
+
+    <resultMap id="ChipFormationList" type="ChipFormation">
+        <result property="id" column="id"/>
+        <result property="startTime" column="start_time"/>
+        <result property="dispersionTime" column="dispersion_time"/>
+        <result property="movieId" column="movie_id"/>
+        <result property="cniemaHallId" column="cniema_hall_id"/>
+        <result property="price" column="price"/>
+        <result property="languageVersion" column="language_version"/>
+        <result property="chipFormationSeat" column="chip_formation_seat"/>
+    </resultMap>
+
     <select id="getChipFormationsByCinemaId" resultMap="chipFormationVo">
         SELECT
-          cf.`id`,
-          cf.`movie_id`,
-          DATE_FORMAT(cf.`start_time`, '%H:%i') AS `start_time`,
-          DATE_FORMAT(cf.`dispersion_time`, '%H:%i') AS `dispersion_time`,
-          cf.`language_version`,
-          ch.`cinema_hall_name`,
-          cf.`price`,
-          DATE_FORMAT(`start_time`, '%m-%d') AS `date_group`
+        cf.`id`,
+        cf.`movie_id`,
+        DATE_FORMAT(cf.`start_time`, '%H:%i') AS `start_time`,
+        DATE_FORMAT(cf.`dispersion_time`, '%H:%i') AS `dispersion_time`,
+        cf.`language_version`,
+        ch.`cinema_hall_name`,
+        cf.`price`,
+        DATE_FORMAT(`start_time`, '%m-%d') AS `date_group`
         FROM
-          `chip_formation` AS cf
-          INNER JOIN `cinema_hall` AS ch
-            ON cf.`cniema_hall_id` = ch.`id`
+        `chip_formation` AS cf
+        INNER JOIN `cinema_hall` AS ch
+        ON cf.`cniema_hall_id` = ch.`id`
         WHERE cf.`cinema_id` = #{cinemaId}
-          AND `start_time` > NOW()
+        AND `start_time` > NOW()
         ORDER BY date_group,
-          `start_time`
+        `start_time`
     </select>
     <resultMap id="chipFormationVo" type="ChipFormationVo">
         <result property="movieId" column="movie_id"></result>

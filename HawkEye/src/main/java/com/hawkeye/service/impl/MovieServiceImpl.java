@@ -20,4 +20,9 @@ public class MovieServiceImpl implements MovieService {
     public List<Movie> getMovies(Integer typrId, Integer regionId, String release) {
         return movieMapper.getMovies(typrId,regionId,release);
     }
+
+    @Override
+    public Movie getMovie(Integer id) {
+        return movieMapper.getMovie(id);
+    }
 }

@@ -1,0 +1,1027 @@
+<html class=" ios">
+
+	<head>
+		<meta charset="utf-8">
+		<link href="//p0.meituan.net" rel="dns-prefetch">
+		<link href="//p1.meituan.net" rel="dns-prefetch">
+		<link href="//mc.meituan.net" rel="dns-prefetch">
+
+		<link rel="dns-prefetch" href="//analytics.meituan.net">
+		<link rel="dns-prefetch" href="//h5.dianping.com">
+
+		<title>支付订单</title>
+		<meta name="description" content="每天团购一次，精品消费指南">
+		<meta name="keywords" content="每天团购一次，精品消费指南">
+		<meta name="applicable-device" content="mobile">
+		<!--// apple Smart App Banner -->
+		<meta name="apple-itunes-app" content="app-id=504274740, app-argument=meituanmovie://www.meituan.com/">
+
+		<meta http-equiv="Content-Security-Policy" content="default-src js://* wx.qlogo.cn thirdwx.qlogo.cn *.tanx.com *.mmstat.com *.meituan.com *.sankuai.com *.wandafilm.com https://i.meituan.com/ https://m.dianping.com/ https://ms0.meituan.com https://mc0.meituan.com https://mpay.meituan.com 192.168.4.223:9999 *.maoyan.com https://*.meituan.com https://*.sankuai.com https://*.meituan.net http://*.meituan.net www.google-analytics.com wvjbscheme://* imeituan://* *.dianping.com *.dpfile.com *.51ping.com mymonitor.movie.dev.sankuai.com http://res.wx.qq.com https://res.wx.qq.com open.weixin.qq.com pub.idqqimg.com *.qianbao.qq.com *.qq.com c.mipcdn.com *.baidu.com wx.tenpay.com *.gtimg.cn validate-ocean.sankuai.com open.95516.com jsbridge://* 'self' 'unsafe-inline' 'unsafe-eval' mqqapi://* blob: gap: data:;">
+
+		<script async="" src="//s0.meituan.net/bs/js/?f=mta-js:mta.min.js"></script>
+		<script async="" src="https://s0.meituan.net/bs/js/?f=mta-js:mta.min.js"></script>
+		<script>
+			"use strict";
+			! function() {
+				var i = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : "_Owl_",
+					n = window;
+				n[i] || (n[i] = {
+					isRunning: !1,
+					isReady: !1,
+					preTasks: [],
+					dataSet: [],
+					use: function(i, t) {
+						this.isReady && n.Owl && n.Owl[i](t), this.preTasks.push({
+							api: i,
+							data: [t]
+						})
+					},
+					add: function(i) {
+						this.dataSet.push(i)
+					},
+					run: function() {
+						var t = this;
+						if(!this.isRunning) {
+							this.isRunning = !0;
+							var i = n.onerror;
+							n.onerror = function() {
+								this.isReady || this.add({
+									type: "jsError",
+									data: arguments
+								}), i && i.apply(n, arguments)
+							}.bind(this), (n.addEventListener || n.attachEvent)("error", function(i) {
+								t.isReady || t.add({
+									type: "resError",
+									data: [i]
+								})
+							}, !0)
+						}
+					}
+				}, n[i].run())
+			}();
+		</script>
+		<script crossorigin="anonymous" src="//www.dpfile.com/app/owl/static/owl_1.7.20.js"></script>
+		<script>
+			Owl.start({
+				project: 'canary',
+				pageUrl: location.href.split('?')[0].replace(/\/\d+/g, '/:id'),
+				resource: {
+					delay: 2000,
+				},
+
+			});
+		</script>
+		<script crossorigin="anonymous" src="//s0.meituan.net/bs/?f=myfe/canary:/yao-0.0.10.js"></script>
+		<script>
+			Yao.start({
+				project: 'canary',
+				page: {
+					sample: 1
+				},
+
+			})
+		</script>
+		<script type="text/javascript">
+			window.browser = "safari";
+			window.platform = "ios";
+			window.version = "";
+			window.channelId = 4;
+			window.channelName = "canary";
+			window.hostEnvironment = null;
+		</script>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+
+		<link rel="stylesheet" href="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/dpmmweb/common.b1034650.css">
+		<link href="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/dpmmweb/theme.ac1d14a5.css" rel="stylesheet">
+
+		<style id="fontface">
+
+		</style>
+
+		<link rel="stylesheet" href="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/dpmmweb/pay.679be780.css">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="icon" href="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/images/icon/faviconmy.ico" type="image/x-icon">
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/images/startup/apple-touch-icon-57x57-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/images/startup/apple-touch-icon-120x120-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="196x196" href="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/images/startup/apple-touch-icon-196x196-precomposed.png">
+		<link rel="apple-touch-startup-image" href="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/images/startup/apple-touch-startup-image-640x1096.png" media="(device-height:568px)">
+		<link rel="apple-touch-startup-image" href="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/images/startup/apple-touch-startup-image-640x920.png" media="(device-height:480px)">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="address=no">
+
+		<style type="text/css">
+			a {
+				cursor: pointer;
+			}
+		</style>
+
+		<script>
+			window.cid = "c_P7V4s";
+			window.uid = "917697497";
+			window.appnm = "maoyan_i";
+			window.cooperateMode = "false";
+			window.openPlatform = false;
+			window.openPlatformSub = false;
+			window.icbcback = false;
+
+			window.val = {
+				"show_id": "21470316753",
+				"user_id": 917697497
+			};
+			// 灵犀埋点加入mtsi-flag
+			window.val = Object.assign({}, {
+				'mtsi-flag': "0",
+			}, window.val);
+			window.val.custom = Object.assign({}, {
+				'__browser__': "safari",
+			}, window.val.custom)
+		</script>
+		<script src="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/js/dpmmweb.mta.min.aaa94b56.js" crossorigin="anonymous"></script>
+		<script async="" defer="" charset="utf-8" src="//analytics.meituan.com/source/stable/mobile.js"></script>
+		<script>
+			/*
+			 * MTA v1.0.0
+			 * (c) 2014-2018
+			 * 美团点评 - 性能平台 
+			 */
+			! function() {
+				"use strict";
+				! function(t, n, e) {
+					function r() {
+						var e = n.createElement("script");
+						e.async = !0, e.src = "//s0.meituan.net/bs/js/?f=mta-js:mta.min.js";
+						var t = n.getElementsByTagName("script")[0];
+						t.parentNode.insertBefore(e, t)
+					}
+					"[object String]" === Object.prototype.toString.call(e) && (e = [e]), t.MeituanAnalyticsObject = e;
+					for(var o = 0; o < e.length; o++) ! function(e) {
+						t[e] = t[e] || function() {
+							(t[e].q = t[e].q || []).push(arguments)
+						}
+					}(e[o]);
+					if("complete" === n.readyState) r();
+					else {
+						var i = "addEventListener",
+							s = "attachEvent";
+						if(t[i]) t[i]("load", r, !1);
+						else if(t[s]) t[s]("onload", r);
+						else {
+							var a = t.onload;
+							t.onload = function() {
+								r(), a && a()
+							}
+						}
+					}
+				}(window, document, "mta"),
+				function(c, e, t) {
+					if(e && !("_mta" in e)) {
+						e._mta = !0;
+						var a = c.location.protocol;
+						if("file:" !== a) {
+							var l = c.location.host,
+								h = e.prototype.open;
+							e.prototype.open = function(e, t, n, r, o) {
+								if(this._method = "string" == typeof e ? e.toUpperCase() : null, t) {
+									if(0 === t.indexOf("http://") || 0 === t.indexOf("https://") || 0 === t.indexOf("//")) this._url = t;
+									else if(0 === t.indexOf("/")) this._url = a + "//" + l + t;
+									else {
+										var i = a + "//" + l + c.location.pathname;
+										i = i.substring(0, i.lastIndexOf("/") + 1), this._url = i + t
+									}
+									var s = this._url.indexOf("?"); - 1 !== s ? (this._searchLength = this._url.length - 1 - s, this._url = this._url.substring(0, s)) : this._searchLength = 0
+								} else this._url = null, this._searchLength = 0;
+								return this._startTime = (new Date).getTime(), h.apply(this, arguments)
+							};
+							var r = "onreadystatechange",
+								o = "addEventListener",
+								i = e.prototype.send;
+							e.prototype.send = function(h) {
+								function t(e, t) {
+									var n = c.mta.q && c.mta.q.beacon,
+										r = n && n.url || "//dreport.meituan.net";
+									if(0 !== e._url.indexOf(r)) {
+										for(var o, i = [98, 114, 111, 119, 115, 101, 114, 46, 97, 106, 97, 120], s = "browser.ajax", a = 0, l = s.length; a < l; a++)
+											if(s.charCodeAt(a) !== i[a]) return;
+										if(e.response) switch(e.responseType) {
+											case "json":
+												o = JSON && JSON.stringify(e.response).length;
+												break;
+											case "blob":
+											case "moz-blob":
+												o = e.response.size;
+												break;
+											case "arraybuffer":
+												o = e.response.byteLength;
+											case "document":
+												o = e.response.documentElement && e.response.documentElement.innerHTML && e.response.documentElement.innerHTML.length + 28;
+												break;
+											default:
+												o = e.response.length
+										}
+										c.mta("send", s, {
+											url: e._url,
+											method: e._method,
+											error: !(0 === e.status.toString().indexOf("2") || 304 === e.status),
+											responseTime: (new Date).getTime() - e._startTime,
+											requestSize: e._searchLength + (h ? h.length : 0),
+											responseSize: o || 0
+										})
+									}
+								}
+								if(o in this) {
+									var e = function(e) {
+										t(this)
+									};
+									this[o]("load", e), this[o]("error", e), this[o]("abort", e)
+								} else {
+									var n = this[r];
+									this[r] = function(e) {
+										n && n.apply(this, arguments), 4 === this.readyState && c.mta && c.mta && t(this)
+									}
+								}
+								return i.apply(this, arguments)
+							}
+						}
+					}
+				}(window, window.XMLHttpRequest),
+				function(u, f) {
+					if(u.fetch && "function" == typeof f && (!("_mta" in f) && "file:" !== u.location.protocol)) {
+						u.fetch = function(e, t) {
+							if(!e) throw new Error("Uncaught (in promise) TypeError: Failed to execute 'fetch'on 'Window': 1 argument required, but only 0 present.at");
+							var n = ((t = t || {}).method || "get").toLowerCase(),
+								r = e.indexOf("?"),
+								o = 0;
+							if("string" != typeof n) throw new Error("Uncaught (in promise) TypeError: Failed to execute 'fetch'on 'window': " + n.toString() + "is not valid HTTP method.");
+							if(-1 === ["get", "post", "delete", "head", "options", "put"].indexOf(n)) throw new Error("Failed to load" + e + ": Method " + n + " is not allowed by Access-Control-Allow-Methods."); - 1 !== r && (o = e.length - 1 - r), "post" === n && (o = t.body && t.body.length || 0);
+							var i, s, a, l = (i = e, s = n, a = o, function(e, t) {
+									u.mta && u.mta("send", "browser.ajax", {
+										url: i,
+										method: s,
+										error: e,
+										responseTime: (new Date).getTime() - t,
+										requestSize: a
+									})
+								}),
+								h = f,
+								c = (new Date).getTime();
+							return h(e, t).then(function(e) {
+								var t = e.clone().status;
+								return l(!(200 <= t && t < 300) || "304" === t, c), e
+							}).catch(function(e) {
+								return l(!0, c), e
+							})
+						}, u.fetch._mta = !0
+					}
+				}(window, window.fetch)
+			}();
+			mta('create', '55dbd10e92d1d4ee71b9c201');
+			// 加入该段代码会根据采样率发送页面性能指标，其中包括
+			// ttfb、ttr、dns 等包含在 window.performance 中的数据
+			// 移除该语句将不会发送该请求
+			mta('send', 'page');
+		</script>
+
+		<script type="text/javascript">
+			var g_timepoint_head = Date.now();
+		</script>
+		<style type="text/css">
+			a {
+				text-decoration: none
+			}
+			
+			.confirm_alert {
+				width: 280px;
+				background: #fff;
+				border-radius: 10px;
+				-webkit-border-radius: 10px;
+				position: fixed;
+				margin: auto;
+				left: 50%;
+				top: 50%;
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				transform: translateX(-50%) translateY(-50%);
+				border: 1px solid #efefef;
+				text-align: center;
+				z-index: 10000002
+			}
+			
+			.confirm_alert .alert_content {
+				padding: 20px;
+				border-bottom: 1px solid #efefef
+			}
+			
+			.confirm_alert .alert_buttons {
+				font-size: 14px;
+				height: 40px;
+				line-height: 40px
+			}
+			
+			.confirm_alert a {
+				color: #08c;
+				float: left;
+				width: 50%;
+				height: 100%;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box
+			}
+			
+			.confirm_alert a.last {
+				border-left: 1px solid #efefef
+			}
+			
+			.confirm_alert a.all {
+				width: 100%
+			}
+		</style>
+		<meta name="lx:autopv" content="off">
+		<meta name="lx:appnm" content="maoyan_i">
+		<meta name="lx:category" content="movie">
+	</head>
+
+	<body class=" hairlines">
+
+		<header class="navbar  ">
+			<div class="nav-wrap-left">
+				<a class="back" href="#" onclick="javascript: window.history.back();return false;"><i class="icon-back"></i></a>
+			</div>
+			<h1 class="nav-header">支付订单</h1>
+		</header>
+
+		<div class="body" style="">
+			<section class="pay-section" data-id="21470316753" data-sectionid="" data-sectionname="" data-seats="" data-seqno="" data-cinemaid="" data-movieid="">
+				<div class="count-down">
+					支付剩余时间: <span class="cd-time"> 09:29</span>
+				</div>
+				<div class="movie-info">
+					<div class="box-flex middle">
+						<div class="title">攀登者</div>
+						<div class="flex"></div>
+						<div class="logo"></div>
+					</div>
+					<div class="date">今天10月21日 21:50 (中文2D)</div>
+					<div class="local">卢米埃深圳汇港IMAX影城 </div>
+					<div class="seats">
+						六号厅
+						<div class="seat">4排9座</div>&nbsp;&nbsp;
+					</div>
+				</div>
+				<div class="pay-info mb-outline-b">
+
+					<div class="box-flex mb-line-t discount-block">
+						<div>活动与抵用券</div>
+						<div class="flex"></div>
+						<div data-bid="dp_wx_order_coupon">
+							<span class="blk discount-amount" data-amount="无可用">无可用</span>
+							<span class="discount-desc" data-content="不与其他优惠活动同享"></span>
+							<span class="arrow"></span>
+						</div>
+					</div>
+
+					<div class="box-flex mb-line-t">
+						<div>手机号码</div>
+
+						<div class="flex"></div>
+						<div class="blk">18529515196</div>
+
+					</div>
+
+					<div class="box-flex mb-line-t">
+						<div>小计</div>
+						<div class="flex"></div>
+						<div class="red"><span class="icon">¥</span><span class="paymoney">48</span></div>
+					</div>
+				</div>
+				<div class="discount-card-union-pay mb-outline-tb">
+					<div class="box-flex middle">
+						<div class="icon-column"><b class="icon vip"></b></div>
+						<div class="flex">
+							<h3>卢米埃观影特惠卡<i>(22元/季度)</i><br>
+        </h3>
+							<a data-link="/multiplecard/detail/1253250?_v_=yes&amp;version=4&amp;channelId=4&amp;cinemaId=16784&amp;originType=2&amp;seatOrderId=21470316753&amp;movieId=1250700">
+								开卡本单<u>立减5元</u>，查看详情
+							</a>
+						</div>
+						<div>
+
+							<input class="weui-switch" type="checkbox">
+
+						</div>
+					</div>
+				</div>
+
+				<div class="migrate-info mb-outline-tb">
+
+				</div>
+
+				<!-- 小食模块 -->
+				<div class="food-block mb-outline-tb has-food">
+					<header class="box-flex middle">
+						<div>观影标配</div>
+						<div class="flex"></div>
+						<div class="snacktitle  box-flex middle">客官，爆米花跟电影最配噢~
+							<div class="snackicon"></div>
+						</div>
+					</header>
+
+					<section class="f-list">
+
+						<div class="f-item mb-outline-t " data-id="100165613">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p1.meituan.net/180.132/movie/4a4cc1b1d93b91da2571bd086aff0903101316.jpg@388w_388h_1e_1c" src="//p1.meituan.net/180.132/movie/4a4cc1b1d93b91da2571bd086aff0903101316.jpg@388w_388h_1e_1c" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">单人</span> 46oz爆米花1桶+700ml果茶1杯
+								</div>
+								<div class="f-recommend-container">
+
+									<div class="f-recommend">
+										<div class="recommendicon"></div><span>观影用户推荐</span>
+									</div>
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 29
+
+										</span>
+										<span class="p-yet">¥<span>35</span></span>
+									</div>
+									<div class="f-oper" data-id="100165613">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t " data-id="100200050">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p0.meituan.net/180.132/movie/a33427153f66ad4b0e556cd5f2c4e244410685.jpg@750w_750h_1e_1c" src="//p0.meituan.net/180.132/movie/a33427153f66ad4b0e556cd5f2c4e244410685.jpg@750w_750h_1e_1c" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">双人</span> 2杯22oz可乐+1杯四拼小食
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 39
+
+										</span>
+										<span class="p-yet">¥<span>42</span></span>
+									</div>
+									<div class="f-oper" data-id="100200050">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t " data-id="100200953">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p0.meituan.net/180.132/movie/c959b64702b3866b8e0022bdcc06b7b3389138.jpg@750w_750h_1e_1c" src="//p0.meituan.net/180.132/movie/c959b64702b3866b8e0022bdcc06b7b3389138.jpg@750w_750h_1e_1c" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">单人</span> 1杯16oz可乐+1杯四拼小食
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 32
+
+										</span>
+										<span class="p-yet">¥<span>36</span></span>
+									</div>
+									<div class="f-oper" data-id="100200953">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t " data-id="100236783">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p0.meituan.net/180.132/movie/9ba289b49353fdd810c4f06116d7c2f8116683.jpg@750w_750h_1e_1c" src="//p0.meituan.net/180.132/movie/9ba289b49353fdd810c4f06116d7c2f8116683.jpg@750w_750h_1e_1c" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">双人</span> 85oz爆米花1桶+700ml果茶2杯
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 45
+
+										</span>
+										<span class="p-yet">¥<span>50</span></span>
+									</div>
+									<div class="f-oper" data-id="100236783">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t " data-id="100079687">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p0.meituan.net/180.132/movie/2fcdb1173e9da2897c16a952eab31d0b264921.jpg@388w_388h_2e" src="//p0.meituan.net/180.132/movie/2fcdb1173e9da2897c16a952eab31d0b264921.jpg@388w_388h_2e" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">双人</span> 85oz爆米花1桶+小食1包+12oz热饮2杯/22oz碳酸饮料2杯(2选1)
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 39.6
+
+										</span>
+										<span class="p-yet">¥<span>60</span></span>
+									</div>
+									<div class="f-oper" data-id="100079687">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t hidden" data-id="100259279">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p0.meituan.net/180.132/movie/80512c9e236096e604af4ebde73f240b73545.jpg@750w_750h_1e_1c" src="//p0.meituan.net/180.132/movie/80512c9e236096e604af4ebde73f240b73545.jpg@750w_750h_1e_1c" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">双人</span> 1杯85oz爆米花+2瓶5100矿泉水
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 32
+
+										</span>
+										<span class="p-yet">¥<span>42</span></span>
+									</div>
+									<div class="f-oper" data-id="100259279">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t hidden" data-id="100079686">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p0.meituan.net/180.132/movie/f75c91cf0477ba5ad8853419387f6820258089.jpg@388w_388h_2e" src="//p0.meituan.net/180.132/movie/f75c91cf0477ba5ad8853419387f6820258089.jpg@388w_388h_2e" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">单人</span> 46oz爆米花1桶+小食1包+12oz热饮1杯/16oz饮料1杯(2选1)
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 28.6
+
+										</span>
+										<span class="p-yet">¥<span>40</span></span>
+									</div>
+									<div class="f-oper" data-id="100079686">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t hidden" data-id="100259278">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p0.meituan.net/180.132/movie/44e57357e19f4813b4f20cf138a0b87067113.jpg@750w_750h_1e_1c" src="//p0.meituan.net/180.132/movie/44e57357e19f4813b4f20cf138a0b87067113.jpg@750w_750h_1e_1c" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">单人</span> 1杯46oz爆米花+1瓶5100矿泉水
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 20
+
+										</span>
+										<span class="p-yet">¥<span>30</span></span>
+									</div>
+									<div class="f-oper" data-id="100259278">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t hidden" data-id="100210128">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p0.meituan.net/180.132/movie/462641fa0ab5aba1d240040dc81e23c1364186.jpg@750w_750h_1e_1c" src="//p0.meituan.net/180.132/movie/462641fa0ab5aba1d240040dc81e23c1364186.jpg@750w_750h_1e_1c" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">双人</span> 四拼小食1份+唯他可可1瓶/格桑泉1瓶/捷翔果茶1瓶(3选2)
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 52
+
+										</span>
+										<span class="p-yet">¥<span>66</span></span>
+									</div>
+									<div class="f-oper" data-id="100210128">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t hidden" data-id="100210125">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p1.meituan.net/180.132/movie/5b7e9de895028e1448ab0c168eec688c309702.jpg@750w_750h_1e_1c" src="//p1.meituan.net/180.132/movie/5b7e9de895028e1448ab0c168eec688c309702.jpg@750w_750h_1e_1c" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">单人</span> 唯他可可椰子水/果茶（2选1）+1杯32oz爆米花
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 32
+
+										</span>
+										<span class="p-yet">¥<span>46</span></span>
+									</div>
+									<div class="f-oper" data-id="100210125">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t hidden" data-id="100176521">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p0.meituan.net/180.132/movie/2deac145b36d139ed05175bcb29e0084300391.jpg@388w_388h_1e_1c" src="//p0.meituan.net/180.132/movie/2deac145b36d139ed05175bcb29e0084300391.jpg@388w_388h_1e_1c" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">单人</span> 1杯16oz现调饮料+1杯46oz爆米花
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 17.7
+
+										</span>
+										<span class="p-yet">¥<span>22</span></span>
+									</div>
+									<div class="f-oper" data-id="100176521">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t hidden" data-id="100181613">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p0.meituan.net/180.132/movie/ad8fba169cfe8ce717c53f69618c367f417646.jpg@388w_388h_1e_1c" src="//p0.meituan.net/180.132/movie/ad8fba169cfe8ce717c53f69618c367f417646.jpg@388w_388h_1e_1c" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">双人</span> 1瓶唯他可可椰子水+1杯22oz现调饮料+1杯85oz爆米花
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 45.1
+
+										</span>
+										<span class="p-yet">¥<span>56</span></span>
+									</div>
+									<div class="f-oper" data-id="100181613">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="f-item mb-outline-t hidden" data-id="100233483">
+							<div class="f-img">
+
+								<img data-com="album" data-page="0" data-pics="//p0.meituan.net/180.132/movie/b301711316ed009179d8930b3029416c265071.jpg@750w_750h_1e_1c" src="//p0.meituan.net/180.132/movie/b301711316ed009179d8930b3029416c265071.jpg@750w_750h_1e_1c" onerror="this.style.display='none'">
+							</div>
+							<div class="f-con">
+								<div class="f-name">
+
+									<span class="personNum">双人</span> 依云/燕麦乳（2选2）+1杯四拼小食
+								</div>
+								<div class="f-recommend-container">
+
+								</div>
+								<div class="f-con-b flex-between">
+									<div class="f-price">
+
+										<span class="p-real"><span class="icon">¥</span> 58
+
+										</span>
+										<span class="p-yet">¥<span>66</span></span>
+									</div>
+									<div class="f-oper" data-id="100233483">
+										<div class="box">
+											<span class="minus" data-bid="dp_wx_order_deal_minus"></span>
+											<span class="num">0</span>
+											<span class="add" data-bid="dp_wx_order_deal_plus"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="showallsnack mb-outline-t">查看全部13个套餐</div>
+
+					</section>
+
+					<footer class="snack-discount-block mb-outline-t">
+						<div class="f-left">抵用券</div>
+						<div class="f-right" data-bid="dp_wx_snack_coupon">
+							<span class="snack-discount-amount">无可用</span>
+							<span class="arrow"></span>
+						</div>
+					</footer>
+
+					<footer class="mb-outline-t count-price-container" style="display:none">
+						<div class="f-left ">小计</div>
+						<div class="f-right">
+							<span class="icon">¥</span><span class="count-price">0</span>
+						</div>
+					</footer>
+
+				</div>
+
+				<section class="food-modal modal">
+
+				</section>
+			</section>
+
+			<section class="discount-modal modal">
+				<div class="modal-title mb-outline-b">
+					活动与抵用券
+					<span class="close" data-modal-toggle=""></span>
+				</div>
+				<div class="modal-content">
+
+					<div class="nothing box-flex column middle">
+						<div class="add-coupon">添加优惠券</div>
+
+						暂无可用的活动和优惠券
+
+					</div>
+
+				</div>
+			</section>
+
+			<section class="food-modal modal">
+			</section>
+
+			<section class="snack-discount-modal modal">
+				<div class="modal-title mb-outline-b">
+					抵用券
+					<span class="close" data-modal-toggle=""></span>
+				</div>
+				<div class="modal-content">
+					<div class="nothing box-flex column middle">
+						暂无可用优惠券
+					</div>
+
+				</div>
+			</section>
+
+			<section class="refundmigrate-detail-modal modal">
+				<div class="modal-title mb-outline-b">
+					退改签须知
+					<span class="close" data-modal-toggle=""></span>
+				</div>
+				<div class="modal-content">
+					<div>
+						<div class="notice notice-refund disabled">
+
+							<div class="title">不支持退票</div>
+
+							<div>不可退款</div>
+
+						</div>
+						<div class="notice notice-migrate disabled">
+
+							<div class="title">不支持改签</div>
+
+							<div>开场时间24小时前，改签手续费3.0元/张</div>
+
+							<div>开场时间60分钟前，改签手续费6.0元/张</div>
+
+							<div>影票实际支付金额小于手续费时无法改签</div>
+
+							<div>使用观影卡或享受票减小吃特惠时，不可改签</div>
+
+						</div>
+						<div class="notice notice-tip mb-line-t">
+							<div class="title">特别提醒</div>
+
+							<div class="protocol">点击查看
+								<a>《退改签规定协议》</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="price-detail-modal modal">
+				<div class="modal-title mb-outline-b">
+					价格明细
+					<span class="close" data-modal-toggle=""></span>
+				</div>
+				<div class="modal-content">
+					<div class="block">
+						<div class="title">电影票</div>
+
+						<div class="box-flex">
+							<div>票价</div>
+							<div class="flex"></div>
+							<div>
+
+								<span class="desc">含服务费5元/张</span> 48元×1
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</section>
+
+			<section class="price-section">
+				<div class="price-block mb-outline-t">
+					<div class="box-flex" style="margin-bottom:10px;justify-content: space-between;">
+						<div id="refundmigrateDetail" class="refundmigrateDetail support" style="display: none;">
+							<span style="color: #FF9900;">退改签须知</span><span class="arrow up"></span>
+						</div>
+						<div class="refundmigrateDetail nosupport" style="">
+							<span style="color: #999;">不支持退票、改签</span>
+							<span class="arrow up"></span>
+						</div>
+						<div id="priceDetail" class="price tips-money" style="padding: 12px 0 6px 0;line-height: 0;"><span class="also">应付:</span><span class="d">¥</span><span class="last-amount">48.00</span><span class="arrow up"></span></div>
+					</div>
+					<div class="price-btn" data-bid="dp_wx_order_pay_btn">确认支付</div>
+				</div>
+			</section>
+			<section class="giftcard-section"></section>
+			<section class="agreement-section">
+			</section>
+		</div>
+		<script src="//s0.meituan.net/bs/?f=myfe/canary:/zepto.bundle.min.js,toast.bundle.min.js,cookie.bundle.min.js,confirm.bundle.min.js" crossorigin="anonymous"></script>
+
+		<script>
+			$(window).on('click', '[data-bid]', function() {
+				var bid = $(this).data('bid');
+				var lab = $(this).data('lab');
+				if((typeof lab) !== 'object') {
+					lab = eval('(' + lab + ')');
+				}
+				var data = {
+					nm: 'mge',
+					val_bid: bid,
+					val_cid: window.cid,
+					event_type: 'click'
+				}
+				if(lab) {
+					data.val_lab = lab;
+				}
+				Analytics('event', data);
+			});
+		</script>
+
+		<script type="text/javascript">
+			window.refundClose = false;
+			window.endorseClose = false;
+			window.discountClose = false;
+			window.goodsClose = false;
+			window.couponsClose = false
+			window.activityClose = false
+		</script>
+		<script src="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/dpmmweb/common.a9d2c08b.js" crossorigin="anonymous"></script>
+		<script src="//s0.meituan.net/bs/?f=myfe/canary:/static/deploy/dpmmweb/pay.7f6480f1.js" crossorigin="anonymous"></script>
+
+	</body>
+
+</html>

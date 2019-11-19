@@ -29,7 +29,7 @@
             `movie_relation_type` AS mrt
             INNER JOIN `movie_type` AS mt
               ON mrt.`movie_type_id` = mt.`id`
-          WHERE `movie_id` = 1
+          WHERE `movie_id` = cm.`movie_id`
           LIMIT 1) AS type_name,
           m.`to_star`
         FROM

@@ -32,6 +32,7 @@ public class ElCinemaServiceImpl implements ElCinemaService {
             elasticsearchTemplate.putMapping(ElCinema.class);//创建映射
             elCinemaInterface.saveAll(elCinemaMapper.getElCinema());//添加全部数据
         }
+
         NativeSearchQueryBuilder queryBuilder = ESUtil.getNSQBuilder();//创建查询
         queryBuilder.withQuery(QueryBuilders.matchQuery("cinemaName", search));
 

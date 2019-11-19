@@ -1,12 +1,9 @@
 package com.hawkeye.service.impl;
 
 import com.hawkeye.mapper.OrderSeatMapper;
-import com.hawkeye.pojo.OrderSeat;
 import com.hawkeye.service.OrderSeatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class OrderSeatServiceImpl implements OrderSeatService {
@@ -15,7 +12,12 @@ public class OrderSeatServiceImpl implements OrderSeatService {
     OrderSeatMapper orderSeatMapper;
 
     @Override
-    public List<OrderSeat> getOrderSeats(String order) {
-        return orderSeatMapper.getOrderSeats(order);
+    public Integer addOrderSeat(Integer ticketOrder, Integer seatId) {
+        return orderSeatMapper.addOrderSeat(ticketOrder,seatId);
+    }
+
+    @Override
+    public Integer getMaxOsid() {
+        return orderSeatMapper.getMaxOsid();
     }
 }

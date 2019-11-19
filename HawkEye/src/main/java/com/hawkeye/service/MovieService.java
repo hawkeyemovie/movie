@@ -13,4 +13,6 @@ public interface MovieService {
      * @return
      */
     List<Movie> getMovies(Integer typrId,Integer regionId,String release);
+
+    Movie getMovie(Integer id);
 }

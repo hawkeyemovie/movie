@@ -54,4 +54,18 @@ public class Seat {
     this.column = column;
   }
 
+  public Seat(Integer id, Integer cinemaHallId, String seatName, Integer row, Integer column) {
+    this.id = id;
+    this.cinemaHallId = cinemaHallId;
+    this.seatName = seatName;
+    this.row = row;
+    this.column = column;
+  }
+
+  public Seat(String seatName) {
+    this.seatName = seatName;
+  }
+
+  public Seat() {
+  }
 }

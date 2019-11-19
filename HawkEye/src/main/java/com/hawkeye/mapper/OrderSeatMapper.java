@@ -1,10 +1,15 @@
 package com.hawkeye.mapper;
 
-import com.hawkeye.pojo.OrderSeat;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
 public interface OrderSeatMapper {
-    List<OrderSeat> getOrderSeats(@Param("order")String order);
+
+    /**
+     * #{ticketOrder},#{seatId}
+     * @return
+     */
+    Integer addOrderSeat(@Param("ticketOrder")Integer ticketOrder,
+                         @Param("seatId")Integer seatId);
+
+    Integer getMaxOsid();
 }

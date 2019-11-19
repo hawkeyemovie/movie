@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hawkeye.mapper.CinemaMapper">
+    <select id="getCinema" resultMap="CinemaList">
+        SELECT * FROM `cinema` WHERE id = #{id}
+    </select>
+
+    <resultMap id="CinemaList" type="Cinema">
+        <result property="id" column="id"/>
+        <result property="cinemaName" column="cinema_name"/>
+        <result property="detailedAddress" column="detailed_address"/>
+        <result property="cinemaLandline" column="cinema_landline"/>
+        <result property="cinemaBrandId" column="cinema_brand_id"/>
+        <result property="cityId" column="city_id"/>
+        <result property="areaId" column="area_id"/>
+        <result property="streetId" column="street_id"/>
+    </resultMap>
+
     <select id="getCinemas" resultType="Cinema" parameterType="Map">
         SELECT
         c.`id`,
@@ -30,24 +44,24 @@
         </where>
         GROUP BY c.`id`;
     </select>
-    <select id="getCinema" resultMap="cinemaVo">
-       SELECT
-          c.`id`,
-          `cinema_name`,
-          `detailed_address`,
-          `cinema_landline`,
-          cs.`service_name`,
-          crs.`service_remarks`,
-          ca.`img_route`
+    <select id="getCinemaVo" resultMap="cinemaVo">
+        SELECT
+        c.`id`,
+        c.`cinema_name`,
+        c.`detailed_address`,
+        c.`cinema_landline`,
+        cs.`service_name`,
+        crs.`service_remarks`,
+        ca.`img_route`
         FROM
-          `cinema` AS c
-          INNER JOIN `cinema_relation_service` AS crs
-            ON c.`id` = crs.`cniema_id`
-          INNER JOIN `cinema_service` AS cs
-            ON crs.`service_id` = cs.`id`
-          INNER JOIN `cinema_atlas` AS ca
-            ON c.`id` = ca.`cinema_id`
-         WHERE c.`id` = #{cinemaId}
+        `cinema` AS c
+        INNER JOIN `cinema_relation_service` AS crs
+        ON c.`id` = crs.`cniema_id`
+        INNER JOIN `cinema_service` AS cs
+        ON crs.`service_id` = cs.`id`
+        INNER JOIN `cinema_atlas` AS ca
+        ON c.`id` = ca.`cinema_id`
+        WHERE c.`id` = #{cinemaId}
     </select>
     <resultMap id="cinemaVo" type="CinemaVo">
         <id property="id" column="id"></id>

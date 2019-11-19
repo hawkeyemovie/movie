@@ -1,6 +1,9 @@
 package com.hawkeye.pojo;
 
 
+import java.util.Date;
+import java.util.List;
+
 public class MovieTicket {
 
   private Integer id;
@@ -16,7 +19,50 @@ public class MovieTicket {
   private java.util.Date foundTime;
   private java.util.Date modifyTime;
   private Integer uId;
+  private Integer chipFormationId;
+  private List<OrderSeat> orderSeatList;
+  private Cinema cinema;
+  private ChipFormation chipFormation;
 
+  public Integer getChipFormationId() {
+    return chipFormationId;
+  }
+
+  public void setChipFormationId(Integer chipFormationId) {
+    this.chipFormationId = chipFormationId;
+  }
+
+  public ChipFormation getChipFormation() {
+    return chipFormation;
+  }
+
+  public void setChipFormation(ChipFormation chipFormation) {
+    this.chipFormation = chipFormation;
+  }
+
+  public Cinema getCinema() {
+        return cinema;
+    }
+
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
+    }
+
+    public Integer getuId() {
+    return uId;
+  }
+
+  public void setuId(Integer uId) {
+    this.uId = uId;
+  }
+
+  public List<OrderSeat> getOrderSeatList() {
+    return orderSeatList;
+  }
+
+  public void setOrderSeatList(List<OrderSeat> orderSeatList) {
+    this.orderSeatList = orderSeatList;
+  }
 
   public Integer getId() {
     return id;
@@ -134,4 +180,26 @@ public class MovieTicket {
     this.uId = uId;
   }
 
+  public MovieTicket() {
+  }
+
+  public MovieTicket(Integer id, String order, String ticketCode, String qrcodeRoute, Integer movieId, Integer cinemaId, Integer movieHallId, double ticketPrice, Date projectionTime, Integer payState, Date foundTime, Date modifyTime, Integer uId, Integer chipFormationId, List<OrderSeat> orderSeatList, Cinema cinema, ChipFormation chipFormation) {
+    this.id = id;
+    this.order = order;
+    this.ticketCode = ticketCode;
+    this.qrcodeRoute = qrcodeRoute;
+    this.movieId = movieId;
+    this.cinemaId = cinemaId;
+    this.movieHallId = movieHallId;
+    this.ticketPrice = ticketPrice;
+    this.projectionTime = projectionTime;
+    this.payState = payState;
+    this.foundTime = foundTime;
+    this.modifyTime = modifyTime;
+    this.uId = uId;
+    this.chipFormationId = chipFormationId;
+    this.orderSeatList = orderSeatList;
+    this.cinema = cinema;
+    this.chipFormation = chipFormation;
+  }
 }

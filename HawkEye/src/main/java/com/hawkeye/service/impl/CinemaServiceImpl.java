@@ -9,12 +9,15 @@ import com.hawkeye.vo.ChipFormationVo;
 import com.hawkeye.vo.CinemaMovieVo;
 import com.hawkeye.vo.CinemaVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class CinemaServiceImpl implements CinemaService {
+
     @Autowired
     private CinemaMapper cinemaMapper;
     @Autowired
@@ -23,15 +26,24 @@ public class CinemaServiceImpl implements CinemaService {
     private ChipFormationMapper chipFormationMapper;
 
     @Override
+    public Cinema getCinema(Integer id) {
+        return cinemaMapper.getCinema(id);
+    }
+	
+
+    @Override
     public List<Cinema> getCinemas(Map<String, Integer> obj) {
         return cinemaMapper.getCinemas(obj);
     }
 
     @Override
-    public CinemaVo getCinema(Integer cinemaId) {
-        CinemaVo cv = cinemaMapper.getCinema(1);
-        List<CinemaMovieVo> cmv = cinemaMovieMapper.getCinemaMoviesByCinemaId(1);
-        List<ChipFormationVo> cfv = chipFormationMapper.getChipFormationsByCinemaId(1);
+    public CinemaVo getCinemaVo(Integer cinemaId) {
+        CinemaVo cv = cinemaMapper.getCinemaVo(cinemaId);
+        System.out.println(cv.getImgRoute());
+        List<CinemaMovieVo> cmv = cinemaMovieMapper.getCinemaMoviesByCinemaId(cinemaId);
+        System.out.println(cmv.size());
+        System.out.println(cmv.get(0).getMovieMainTitle());
+        List<ChipFormationVo> cfv = chipFormationMapper.getChipFormationsByCinemaId(cinemaId);
 //        for (CinemaMovieVo item : cmv
 //        ) {
 //            item.setChipFormationVos(new ArrayList<ChipFormationVo>());

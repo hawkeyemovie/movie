@@ -11,7 +11,31 @@ public class ChipFormation {
   private double price;
   private String languageVersion;
   private String chipFormationSeat;
+  private Movie movie;
+  private CinemaHall cinemaHall;
 
+  public ChipFormation(CinemaHall cinemaHall) {
+    this.cinemaHall = cinemaHall;
+  }
+
+  public ChipFormation() {
+  }
+
+  public Movie getMovie() {
+    return movie;
+  }
+
+  public void setMovie(Movie movie) {
+    this.movie = movie;
+  }
+
+  public CinemaHall getCinemaHall() {
+    return cinemaHall;
+  }
+
+  public void setCinemaHall(CinemaHall cinemaHall) {
+    this.cinemaHall = cinemaHall;
+  }
 
   public Integer getId() {
     return id;

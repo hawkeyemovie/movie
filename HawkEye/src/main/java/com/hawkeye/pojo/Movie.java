@@ -16,14 +16,14 @@ public class Movie implements Serializable {
   private Integer movieVersionId;
   private Integer movieRegionId;
   private java.util.Date releaseTime;
-  private String version;
+  private double score;
 
-  public String getVersion() {
-    return version;
+  public double getScore() {
+    return score;
   }
 
-  public void setVersion(String version) {
-    this.version = version;
+  public void setScore(double score) {
+    this.score = score;
   }
 
   public Integer getId() {

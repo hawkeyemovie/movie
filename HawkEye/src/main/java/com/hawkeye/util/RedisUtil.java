@@ -118,6 +118,24 @@ public class RedisUtil {
         return stringRedisTemplate.opsForHash().entries(key);
     }
 
+
+    /**
+     * 判断键是否存在
+     * @param key
+     * @return
+     */
+    public Boolean hasKey(String key){
+        return stringRedisTemplate.hasKey(key);
+    }
+
+    /**
+     *
+     * @param key
+     */
+    public Set keys(String key){
+        Set set = stringRedisTemplate.keys(key+"*");
+        return set;
+    }
 //    /**
 //     *  在redis中以list方式存储   以集合方式向右边添加元素。
 //     * @param key 键
