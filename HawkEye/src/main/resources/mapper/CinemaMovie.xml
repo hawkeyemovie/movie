@@ -5,6 +5,7 @@
     <select id="getCinemaMoviesByCinemaId" resultType="CinemaMovieVo">
         SELECT
           m.`id` AS movie_id,
+          m.`default_img`,
           m.`movie_main_title`,
           ROUND(
             IF(
@@ -38,4 +39,13 @@
             ON cm.`movie_id` = m.`id`
         WHERE `cinema_id` = #{cinemaId}
     </select>
+    <resultMap id="cinemaMovieVo" type="CinemaMovieVo">
+      <id property="movieId" column="movie_id"></id>
+      <result property="defaultImg" column="default_img"></result>
+      <result property="movieMainTitle" column="movie_main_title"></result>
+      <result property="score" column="score"></result>
+      <result property="movieDuration" column="movie_duration"></result>
+      <result property="typeName" column="type_name"></result>
+      <result property="toStar" column="to_star"></result>
+    </resultMap>
 </mapper>

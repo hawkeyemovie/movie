@@ -39,10 +39,7 @@ public class CinemaServiceImpl implements CinemaService {
     @Override
     public CinemaVo getCinemaVo(Integer cinemaId) {
         CinemaVo cv = cinemaMapper.getCinemaVo(cinemaId);
-        System.out.println(cv.getImgRoute());
         List<CinemaMovieVo> cmv = cinemaMovieMapper.getCinemaMoviesByCinemaId(cinemaId);
-        System.out.println(cmv.size());
-        System.out.println(cmv.get(0).getMovieMainTitle());
         List<ChipFormationVo> cfv = chipFormationMapper.getChipFormationsByCinemaId(cinemaId);
 //        for (CinemaMovieVo item : cmv
 //        ) {

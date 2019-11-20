@@ -4,6 +4,7 @@ import java.util.List;
 
 public class CinemaMovieVo {
     private Integer movieId;
+    private String defaultImg;
     private String movieMainTitle;
     private double score;
     private Integer movieDuration;
@@ -17,6 +18,14 @@ public class CinemaMovieVo {
 
     public void setMovieId(Integer movieId) {
         this.movieId = movieId;
+    }
+
+    public String getDefaultImg() {
+        return defaultImg;
+    }
+
+    public void setDefaultImg(String defaultImg) {
+        this.defaultImg = defaultImg;
     }
 
     public String getMovieMainTitle() {

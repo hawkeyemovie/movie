@@ -11,6 +11,7 @@ public class Cinema {
   private Integer cityId;
   private Integer areaId;
   private Integer streetId;
+  private double minPrice;
 
 
   public Integer getId() {
@@ -84,4 +85,11 @@ public class Cinema {
     this.streetId = streetId;
   }
 
+  public double getMinPrice() {
+    return minPrice;
+  }
+
+  public void setMinPrice(double minPrice) {
+    this.minPrice = minPrice;
+  }
 }
