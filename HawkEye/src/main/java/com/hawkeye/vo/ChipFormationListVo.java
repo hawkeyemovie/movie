@@ -2,6 +2,7 @@ package com.hawkeye.vo;
 
 public class ChipFormationListVo {
     private Integer id;
+    private Integer cinemaHallId;
     private String startTime;
     private String dispersionTime;
     private String languageVersion;
@@ -14,6 +15,14 @@ public class ChipFormationListVo {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCinemaHallId() {
+        return cinemaHallId;
+    }
+
+    public void setCinemaHallId(Integer cinemaHallId) {
+        this.cinemaHallId = cinemaHallId;
     }
 
     public String getStartTime() {

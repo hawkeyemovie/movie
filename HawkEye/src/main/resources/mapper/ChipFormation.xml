@@ -21,6 +21,7 @@
         SELECT
         cf.`id`,
         cf.`movie_id`,
+        cf.`cniema_hall_id` AS `cinema_hall_id`,
         DATE_FORMAT(cf.`start_time`, '%H:%i') AS `start_time`,
         DATE_FORMAT(cf.`dispersion_time`, '%H:%i') AS `dispersion_time`,
         cf.`language_version`,
@@ -41,6 +42,7 @@
         <result property="filmingTime" column="date_group"></result>
         <collection property="chipFormationListVos" ofType="ChipFormationListVo">
             <id property="id" column="id"></id>
+            <result property="cinemaHallId" column="cinema_hall_id"></result>
             <result property="startTime" column="start_time"></result>
             <result property="dispersionTime" column="dispersion_time"></result>
             <result property="languageVersion" column="language_version"></result>

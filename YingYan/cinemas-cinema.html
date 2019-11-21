@@ -1362,6 +1362,11 @@
 		</div>
 		<script type='text/javascript' src='shoujiduan/js/jquery-2.1.0.js'></script>
 		<script type='text/javascript'>
+			function getUrlParam(name) {
+		        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+		        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+		        if (r != null) return unescape(r[2]); return null; //返回参数值
+		    }
 			$("body").on('click','.movie',function(){
 				$(this).addClass('active').siblings().removeClass('active');
 				$('.container').find('.show-list').eq(this.getAttribute('data-index')).addClass('active').siblings().removeClass('active');
@@ -1370,7 +1375,7 @@
 				$(this).addClass('active').siblings().removeClass('active');
 				$(this).parents('.show-list').find(".plist-container").eq(this.getAttribute('data-index')).addClass('active').siblings().removeClass('active');
 			});
-			$.getJSON('http://localhost:8080/cinema/detailed/1', function(a) {
+			$.getJSON('http://localhost:8080/cinema/detailed/'+getUrlParam("cId")+'', function(a) {
 				var $cinemabriefcontainer = $("<div class='cinema-brief-container'><h3 class='name text-ellipsis'>" + a[ 'cinemaName'] + "</h3><div class='address text-ellipsis'>" + a['detailedAddress'] + "</div><div class='telphone'>" + a[ 'cinemaLandline'] + "</div></div>");
 				var $service = $("<div class='features-group'><div class='group-title'>影院服务</div></div>");
 				$.each(a['cinemaServiceVos'], function(b) {
@@ -1419,7 +1424,8 @@
 							if (d % 2 != 0) {
 								iseven = "even";
 							}
-							$tbody.append("<tr class='" + iseven + "'><td><span class='begin-time'>" + a['cinemaMovieVos'][b][ 'chipFormationVos' ][c]['chipFormationListVos'][d]['startTime'] + "</span><br><span class='end-time'>" + a[ 'cinemaMovieVos'][b]['chipFormationVos'][c]['chipFormationListVos'][d]['dispersionTime'] + "散场</span></td><td><span class='lang'>" + a['cinemaMovieVos'][b]['chipFormationVos'][c][ 'chipFormationListVos' ][d]['languageVersion'] + "</span></td><td><span class='hall'>" + a['cinemaMovieVos'][b][ 'chipFormationVos' ][c]['chipFormationListVos'][d]['cinemaHallName'] + "</span></td><td><span class='sell-price'><span class='stonefont'>" + a['cinemaMovieVos'][b][ 'chipFormationVos' ][c]['chipFormationListVos'][d]['price'] + "</span></span></td><td><a href=''class='buy-btn normal'data-act='show-click'>选座购票</a></td></tr>");
+//							$tbody.append("<tr class='" + iseven + "'><td><span class='begin-time'>" + a['cinemaMovieVos'][b][ 'chipFormationVos' ][c]['chipFormationListVos'][d]['startTime'] + "</span><br><span class='end-time'>" + a[ 'cinemaMovieVos'][b]['chipFormationVos'][c]['chipFormationListVos'][d]['dispersionTime'] + "散场</span></td><td><span class='lang'>" + a['cinemaMovieVos'][b]['chipFormationVos'][c][ 'chipFormationListVos' ][d]['languageVersion'] + "</span></td><td><span class='hall'>" + a['cinemaMovieVos'][b][ 'chipFormationVos' ][c]['chipFormationListVos'][d]['cinemaHallName'] + "</span></td><td><span class='sell-price'><span class='stonefont'>" + a['cinemaMovieVos'][b][ 'chipFormationVos' ][c]['chipFormationListVos'][d]['price'] + "</span></span></td><td><a href=''class='buy-btn normal'data-act='show-click'>选座购票</a></td></tr>");
+							$tbody.append("<tr class='" + iseven + "'><td><span class='begin-time'>" + a['cinemaMovieVos'][b][ 'chipFormationVos' ][c]['chipFormationListVos'][d]['startTime'] + "</span><br><span class='end-time'>" + a[ 'cinemaMovieVos'][b]['chipFormationVos'][c]['chipFormationListVos'][d]['dispersionTime'] + "散场</span></td><td><span class='lang'>" + a['cinemaMovieVos'][b]['chipFormationVos'][c][ 'chipFormationListVos' ][d]['languageVersion'] + "</span></td><td><span class='hall'>" + a['cinemaMovieVos'][b][ 'chipFormationVos' ][c]['chipFormationListVos'][d]['cinemaHallName'] + "</span></td><td><span class='sell-price'><span class='stonefont'>" + a['cinemaMovieVos'][b][ 'chipFormationVos' ][c]['chipFormationListVos'][d]['price'] + "</span></span></td><td><a href='http://127.0.0.1:8020/YingYan/cinemas-seat.html?cId="+a['id']+"&chId="+a['cinemaMovieVos'][b]['chipFormationVos'][c]['chipFormationListVos'][d]['id']+"&cfId="+a[ 'cinemaMovieVos'][b]['chipFormationVos'][c]['chipFormationListVos'][d]['cinemaHallId']+"&mId="+a['cinemaMovieVos'][b]['chipFormationVos'][c]['movieId']+"'class='buy-btn normal'data-act='show-click'>选座购票</a></td></tr>");
 						});
 						$plistcontainer.find("tbody").replaceWith($tbody);
 					$showlist.append($plistcontainer);
